@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Světové časy</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="style.css">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300&display=swap" rel="stylesheet">
+        <link rel="shortcut icon" href="imgs/refresh.png" type="image/x-icon">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body onload="cas_ted()" id="body">
+        <div class="main-title">
+            <small>Czech time</small>
+            <div id="tamni-cas"></div>
+            <div class="wrapper">
+                <div class="time-box">
+                    <h3>Estonsko</h3>
+                    <div id="estonsko-cas"></div>
+                </div>
+                <div class="time-box">
+                    <h3>Tokyo</h3>
+                    <div id="tokyo-cas"></div>
+                </div>
+                <div class="time-box">
+                    <h3>Sydney</h3>
+                    <div id="sydney-cas"></div>
+                </div>
+                <div class="time-box">
+                    <h3>Moskva</h3>
+                    <div id="moskva-cas"></div>
+                </div>
+                <div class="time-box">
+                    <h3>New York</h3>
+                    <div id="newy-cas"></div>
+                </div>
+            </div>
+        </div>
+    </body>
+    <script>
+        window.onload = function() {
+            slider();
+            cas_ted()
+        };
+
+        function cas_ted() {
+            vytvor_casy(0, 'tamni-cas');
+            vytvor_casy(1, 'estonsko-cas');
+            vytvor_casy(8, 'tokyo-cas');
+            vytvor_casy(10, 'sydney-cas');
+            vytvor_casy(2, 'moskva-cas');
+            vytvor_casy(-5, 'newy-cas');
+        }
+
+        function vytvor_casy(rozdil, id) {
+            dnes = new Date();
+            hodiny = dnes.getHours();
+            if (hodiny == 0) { hodiny += 24 }
+            rozdil > 0 ? hodiny += rozdil : hodiny += rozdil;
+            if (hodiny >= 24) { hodiny -= 24; }
+            minuty = dnes.getMinutes();
+            sekundy = dnes.getSeconds();
+            minuty = checkTime(minuty);
+            sekundy = checkTime(sekundy);
+            document.getElementById(id).innerHTML = hodiny + ":" + minuty + ":" + sekundy;
+            var t = setTimeout(cas_ted, 500);
+        }
+
+        // Přidá 0 před čísla která jsou menší jak 10
+        function checkTime(i) {
+            if (i < 10) {i = "0" + i};
+            return i;
+        }
+
+        urls = ["imgs/0.jpg", "imgs/3.jpg", "imgs/1.jpg", "imgs/2.jpg", "imgs/4.jpg", "imgs/5.jpg"];
+        ids = ['tamni-cas', 'estonsko-cas', 'tokyo-cas', 'sydney-cas', 'moskva-cas', 'newy-cas'];
+
+        // cachovaní obrázků => brání blikání pozadí
+        urls.forEach(function(img){
+            new Image().src = img; 
+        });
+
+        function slider() {
+            var k = 0; 
+            for(i = 0; i < 6; i++) {
+                setTimeout(function() {
+                    if (k > 0) document.getElementById(ids[k-1]).style.color = "#fff";
+                    document.getElementById('body').style.backgroundImage = `url('${urls[k]}')`;
+                    document.getElementById(ids[k]).style.color = "rgba(255,94,94,1)";
+                    if (k + 1 === urls.length) { 
+                        setTimeout(function() { document.getElementById(ids[k]).style.color = "#fff"; slider(); }, 3000) 
+                    }else {
+                        k++;
+                    }
+                }, 3000 * i);
+            }
+        }
+    </script>
+</html>
