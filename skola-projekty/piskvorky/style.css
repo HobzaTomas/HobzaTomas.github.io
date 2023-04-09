@@ -1,0 +1,250 @@
+/* Paleta - https://coolors.co/312f2f-84dccf-a6d9f7-bccce0-bf98a0 */
+
+html, body {
+    margin: 0;
+    font-family: 'Quicksand', sans-serif;
+    color: #fff;
+}
+
+.place-holder {
+    height: 100%;
+    position: relative;
+    z-index: 100;
+}
+
+/* MENU */
+
+.menu {
+    z-index: 3;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+
+    background-color: #312F2F;
+}
+
+.menu h1 {
+    text-align: center;
+    font-size: 8.53vh;
+}
+
+.menu form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    gap: 10px;
+    margin-bottom: 0px;
+}
+
+.menu form div input {
+    outline: none;
+    padding: 10px;
+    font-size: 15px;
+    border-radius: 4px;
+}
+
+.menu form div:first-child input {
+    border: 3px solid #84dccf;
+}
+
+.menu form div:nth-child(2) input {
+    border: 3px solid #bf98a0;
+}
+
+.menu form div:nth-child(4) {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+#wrapper {
+    max-height: 0px;
+}
+
+#wrapper input {
+    border: 3px solid #A6D9F7;
+}
+
+.menu form img {
+    cursor: pointer;
+    height: 20px;
+    width: 20px;
+    transition: transform 250ms;
+
+    filter: invert(91%) sepia(0%) saturate(5678%) hue-rotate(119deg) brightness(113%) contrast(99%);  
+}
+
+.menu form > input[type="button"] {
+    outline: none;
+    cursor: pointer;
+
+    padding: 10px 70px;
+    margin-top: 15px;
+    font-size: 25px;
+
+    border: 0px solid;
+    background-color: #A6D9F7;
+    color: #fff;
+}
+
+/* HRACÍ POLE */
+
+.hraci-pole {
+    z-index: 2;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+
+    background-color: #312f2f;
+}
+
+.hraci-pole {
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#actualMove { 
+    position: absolute;
+    left: 6%;
+    top: 5%;
+    font-size: 35px;
+}
+
+.field table {
+    user-select: none;
+    table-layout: fixed;
+    border-spacing: 0;
+
+    background-color: #312f2f;
+}
+
+.field table td {
+    cursor: pointer;
+    display: inline-block;
+    height: 45px;
+    width: 45px;
+    padding: 4px 5px 6px 5px;
+
+    border: 1px solid #fff;
+    text-align: center;
+    font-size: 40px;
+
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.field table tr > td {
+    border-top: 0;
+}
+
+.field table tr:last-child > td {
+    border-bottom: 0;
+}
+
+.field table td:first-child {
+    border-left: 0;
+}
+
+.field table td:last-child {
+    border-right: 0;
+}
+
+/* VÝHERNÍ DIALOG */
+
+.dialog-background {
+    z-index: 1;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+
+    opacity: 0.9;
+    background-color: #312f2f;   
+}
+
+.dialog-content {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 30%;
+
+    background-color: transparent;
+    text-align: center;
+}
+
+.dialog-content input[type="button"] {
+    padding: 10px 70px;
+    font-size: 25px;
+    background-color: #A6D9F7;
+    color: #fff;
+    outline: none;
+    border: 0px solid;
+    cursor: pointer;
+    margin-top: 15px;
+}
+
+.dialog-content input[type="button"]:last-child {
+    margin-left: 30px;
+}
+
+/* For mobile phones: */
+@media only screen and (max-width: 768px) {
+    .field table td {
+        height: 15px;
+        width: 15px;
+        padding: 2px 5px 10px 5px;
+
+        font-size: 20px;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .field table td {
+        height: 8px;
+        width: 8px;
+        padding: 2px 6px 12px 5px;
+
+        font-size: 15px;
+    }
+
+    .dialog-content h1 {
+        font-size: 30px !important;
+    }
+
+    .dialog-content input[type="button"] {
+        padding: 10px 30px;
+    }
+    
+    .dialog-content input[type="button"]:last-child {
+        margin-left: 0;
+    }
+}
+
+/* ANIMACE */
+
+@keyframes slide-top {
+  0% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+  100% {
+    -webkit-transform: translateY(-1000px);
+            transform: translateY(-1000px);
+  }
+}
+
+@keyframes slide-down {
+    0% {
+      -webkit-transform: translateY(-1000px);
+              transform: translateY(-1000px);
+      
+    }
+    100% {
+      -webkit-transform: translateY(0);
+              transform: translateY(0);
+    }
+}
+

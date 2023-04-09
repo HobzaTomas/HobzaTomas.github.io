@@ -1,0 +1,48 @@
+<html>
+    <head>
+        <title>Piškvorky</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="style.css">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap">
+    </head>
+    <body>
+        <script src="scripts/init.js"></script>
+        
+        <div class="place-holder">
+            <div class="menu" id="menu">
+                <h1>Piškvorky</h1>
+                <form name="form">
+                    <div>
+                        <div>Hráč 1: </div><input name="hrac1" type="text">
+                    </div>
+                    <div>
+                        <div>Hráč 2: </div><input name="hrac2" type="text">
+                    </div>                        
+                    <img src="Ar.png" id="arrow" onclick="toggle()">
+                    <div>
+                        <div id="wrapper">
+                            <div>Velikost pole: </div><input name="fieldSize" type="text">
+                        </div>
+                    </div>
+                    <input type="button" value="Hrát" onclick="changeScene()">
+                </form>
+            </div>
+            <div class="hraci-pole">
+                <div id="actualMove"></div>
+                <div class="field">
+                    <table id="playField">
+                    </table>
+                </div>
+            </div>
+            <div class="dialog-background" id="dialog">
+            </div>
+            <div class="dialog-content" id="dialog-content">
+                <h1 id="winner"></h1>
+                <input type="button" value="Hrát znovu" id="againButton">
+                <input type="button" value="Zpět do menu" id="menuButton">
+            </div>
+        </div>
+    </body>
+</html>
